@@ -18,11 +18,19 @@
 
       let guessCount = 0;
       let guessedCorrectly = false;
+      let userCancelled = false;
 
       while (!guessedCorrectly) {
         let input = prompt("Guess a number between 1 and 10.");
         let guess = Number(input);
         guessCount++;
+
+        if (input === null) {
+          playAgain = false;
+          guessedCorrectly = true;
+          userCancelled = true;
+          break;
+        }
 
         if (guess > randomNumber) {
           alert("Your guess was too high, guess again.");
@@ -34,9 +42,11 @@
         }
       }
 
-      let response = prompt("Would you like to play again? (yes or no)");
-      if (response.toLowerCase() !== "yes") {
-        playAgain = false;
+      if (!userCancelled) {
+        let response = prompt("Would you like to play again? (yes or no)");
+        if (response.toLowerCase() !== "yes") {
+          playAgain = false;
+        }
       }
     }
   </script>
