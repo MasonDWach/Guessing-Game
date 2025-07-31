@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Guessing Game</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>Guessing Game</h1>
+
+  <script>
+    let playAgain = true;
+
+    while (playAgain) {
+      let randomNumber = Math.floor(Math.random() * 10) + 1;
+      console.log("Random number (for testing):", randomNumber);
+
+      let guessCount = 0;
+      let guessedCorrectly = false;
+
+      while (!guessedCorrectly) {
+        let input = prompt("Guess a number between 1 and 10.");
+        let guess = Number(input);
+        guessCount++;
+
+        if (guess > randomNumber) {
+          alert("Your guess was too high, guess again.");
+        } else if (guess < randomNumber) {
+          alert("Your guess was too low, guess again.");
+        } else {
+          alert("You guessed it in " + guessCount + " guesses!");
+          guessedCorrectly = true;
+        }
+      }
+
+      let response = prompt("Would you like to play again? (yes or no)");
+      if (response.toLowerCase() !== "yes") {
+        playAgain = false;
+      }
+    }
+  </script>
+</body>
+</html>
